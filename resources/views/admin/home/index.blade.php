@@ -104,14 +104,14 @@
                 $user = App\Models\User::take(5)->get()
               @endphp
               <div class="mt-0">
-                 
+
                  <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <table class="table table-responsive">
                                     <thead>
                                         <tr>
-                                           
+
                                             <th>#</th>
                                             <th>Nombre</th>
                                             <th>Estado</th>
@@ -152,12 +152,12 @@
                 </div>
             </div>
             <div class="card-body">
-                <canvas class="chartjs" data-height="400" id="employee"></canvas>
-            </div>    
+                <canvas id="employee"></canvas>
+            </div>
           </div>
        </div>
      </div>
- 
+
 
      <!-- Medal Card -->
    <!-- Dashboard Ecommerce Starts -->
@@ -189,8 +189,8 @@
             </div>
             <div class="card-body statistics-body">
                 <div class="row">
-                
-                    
+
+
                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                         <div class="media">
                             <div class="avatar white mr-2">
@@ -259,14 +259,14 @@
             <div class="avatar-content">
               <i class="fas fa-dollar-sign font-medium-5"></i>
             </div>
-          </div> 
+          </div>
           @php
              $tbolivares = \DB::table('tasas')->where('fecha_emision',date('Y-m-d'))
              ->sum('amount')
-          @endphp 
+          @endphp
         </div>
 
-       
+
       </div>
     </div>
 
@@ -343,7 +343,7 @@
         <div class="card-header">
           <div>
             <h2 class="font-weight-bolder mb-0">
-                
+
               {{ $config->prefijo_moneda }}{{ $total_deuda }}
 
             </h2>
@@ -363,7 +363,7 @@
         <div class="card-header">
           <div>
             <h2 class="font-weight-bolder mb-0">
-                
+
               {{ $config->prefijo_moneda }}{{ $total_cobrar }}
 
             </h2>
@@ -423,15 +423,15 @@
                             <?php $customer = DB::table('clientes')->where('nombre',$sale->razon_social)->first(); ?>
                             <tr>
                               <td>{{ $sale->fecha }}</td>
-                             
+
                               @if($sale->estado == 'Procesado')
                               <td><div class="badge badge-success">Procesado</div></td>
 
                               @else
                               <td><div class="badge badge-danger">Cancelado</div></td>
-                             
+
                               @endif
-                              
+
                               <td>{{$sale->total}}</td>
                             </tr>
                             @endforeach
@@ -445,7 +445,7 @@
                           <thead>
                             <tr>
                               <th>{{trans('file.date')}}</th>
-                            
+
                               <th>{{trans('file.customer')}}</th>
                               <th>{{trans('file.status')}}</th>
                               <th>{{trans('file.grand total')}}</th>
@@ -455,7 +455,7 @@
                           </tbody>
                         </table>
                       </div>
-                  </div> 
+                  </div>
                   <div role="tabpanel" class="tab-pane fade" id="purchase-latest">
                       <div class="table-responsive">
                         <table class="table">
@@ -465,7 +465,7 @@
                               <th>Código</th>
                               <th>Proveedor</th>
                               <th>Estado</th>
-                             
+
                             </tr>
                           </thead>
                           <tbody>
@@ -488,7 +488,7 @@
                               @else
                               <td><div class="badge badge-danger">Ordenado</div></td>
                               @endif
-                             
+
                             </tr>
                             @endforeach
                           </tbody>
@@ -496,7 +496,7 @@
                       </div>
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="products-latest">
-                    
+
                       <div class="table-responsive">
                         <table class="table">
                           <thead>
@@ -509,19 +509,19 @@
                           </thead>
                           <tbody>
                             @foreach($products as $producto)
-                          
+
                             <tr>
                               <td>{{$producto->codigo_barra}}</td>
-                             
+
                                 <td>{{ $producto->descripcion }}</td>
-                              
+
                               @if($producto->status == 1)
                               <td><div class="badge badge-success">Disponible</div></td>
                               @elseif($producto->status == 2)
                               <td><div class="badge badge-danger">Agotado</div></td>
                               @else
                               <td><div class="badge badge-warning">En espera</div></td>
-                             
+
                               @endif
                               <td>{{$producto->stock_actual}}</td>
                             </tr>
@@ -531,12 +531,12 @@
                       </div>
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="expeses-latest">
-                    
+
                       <div class="table-responsive">
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>Fecha</th> 
+                              <th>Fecha</th>
                               <th>Descripción</th>
                               <th>Estado</th>
                               <th>Cantidad ($)</th>
@@ -544,16 +544,16 @@
                           </thead>
                           <tbody>
                             @foreach($recent_expense as $producto)
-                          
+
                             <tr>
                               <td>{{ $producto->fecha }} {{ $producto->hora }}</td>
-                             
-                             
+
+
                                 <td>{{ $producto->descripcion }}</td>
-                              
-                             
+
+
                               <td><div class="badge badge-success">Realizado</div></td>
-                              
+
                               <td>{{$producto->cantidad}}</td>
                             </tr>
                             @endforeach
@@ -569,13 +569,13 @@
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>Fecha</th> 
+                              <th>Fecha</th>
                               <th>Tasa (Bs)</th>
                             </tr>
                           </thead>
                           <tbody>
                             @foreach($tasas as $tasa)
-                          
+
                             <tr>
                               <td>{{ $tasa->fecha_emision }}</td>
                               <td>{{ $tasa->amount }}Bs.</td>
@@ -585,7 +585,7 @@
                         </table>
                       </div>
                   </div>
-                </div> 
+                </div>
               </div>
             </div>
              <div class="col-md-5">
@@ -688,24 +688,24 @@
         </div>
 </section>
       <!--/ Medal Card -->
- 
+
 
 
 @endsection
 @push('scripts')
-    
- 
+
+
 
     <script>
 
 
-  
+
  var tasa = $('#tasa').val();
 
  console.log(tasa);
 
     if(tasa == 0)
-    { 
+    {
          $('#createModalTasa').modal('show');
 
     }
@@ -713,8 +713,60 @@
     {
         $('#createModalTas').modal('hide');
     }
-  
+
 
     </script>
+    @push('scripts')
 
+    {{-- Create the chart with javascript using canvas --}}
+        <script>
+            // Get Canvas element by its id
+            employee_chart = document.getElementById('employee').getContext('2d');
+            chart = new Chart(employee_chart,{
+                type:'line',
+                data:{
+                    labels:[
+                        /*
+                            this is blade templating.
+                            we are getting the date by specifying the submonth
+                         */
+                        '{{Carbon\Carbon::now()->subMonths(5)->toFormattedDateString()}}',
+                        '{{Carbon\Carbon::now()->subMonths(4)->toFormattedDateString()}}',
+                        '{{Carbon\Carbon::now()->subMonths(3)->toFormattedDateString()}}',
+                        '{{Carbon\Carbon::now()->subMonths(2)->toFormattedDateString()}}',
+                        '{{Carbon\Carbon::now()->subMonths(1)->toFormattedDateString()}}',
+                        '{{Carbon\Carbon::now()->subMonths(0)->toFormattedDateString()}}'
+                        ],
+                    datasets:[{
+                        label:'Acceso al sistema durante el año 2022',
+                        data:[
+
+                            '{{$emp_count_5}}',
+                            '{{$emp_count_4}}',
+                            '{{$emp_count_3}}',
+                            '{{$emp_count_2}}',
+                            '{{$emp_count_1}}',
+                            '{{$emp_count_0 }}'
+                        ],
+                        backgroundColor: [
+                            'rgba(178,235,242 ,1)'
+                        ],
+                        borderColor: [
+                            'rgba(0,150,136 ,1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    @endpush
 @endpush

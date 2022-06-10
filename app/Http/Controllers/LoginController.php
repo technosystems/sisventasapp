@@ -27,7 +27,7 @@ class LoginController extends Controller
         . date('H:m:i').' del día: '.date('d/m/Y');
         $log->save();
 
-        $logins = Login::orderBy('login_at', 'desc')->paginate(10);
+        $logins = Login::orderBy('login_at', 'desc')->get();
         $roles = Role::get();
         return view('admin.login.index',  compact('roles','logins'));
 
